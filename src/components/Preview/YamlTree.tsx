@@ -35,7 +35,7 @@ export const YamlTree = forwardRef<HTMLDivElement, YamlTreeProps>(
             </button>
             <span className={styles.divider} />
             <span className={styles.levelLabel}>Level:</span>
-            {[1, 2, 3, 4, 5].map((level) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((level) => (
               <button
                 key={level}
                 className={styles.levelBtn}
