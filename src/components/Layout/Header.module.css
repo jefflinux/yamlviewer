@@ -127,6 +127,19 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+.excelBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(33, 115, 70, 0.3);
+  border-color: rgba(33, 115, 70, 0.5);
+}
+
+.excelBtn:hover {
+  background: rgba(33, 115, 70, 0.5);
+  border-color: rgba(33, 115, 70, 0.7);
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 0 var(--space-sm);

@@ -1,4 +1,11 @@
 import { useCallback, useEffect } from 'react'
+import { excelBufferToYaml } from '../utils/excelToYaml'
+
+const EXCEL_EXTENSIONS = ['.xlsx', '.xls', '.xlsm', '.xlsb', '.csv']
+
+function isExcelFile(filename: string): boolean {
+  return EXCEL_EXTENSIONS.some((ext) => filename.toLowerCase().endsWith(ext))
+}
 
 interface UseFileHandlerOptions {
   setContent: (content: string) => void
@@ -8,13 +15,28 @@ interface UseFileHandlerOptions {
 export function useFileHandler({ setContent, setFilename }: UseFileHandlerOptions) {
   const handleFile = useCallback(
     (file: File) => {
-      const reader = new FileReader()
-      reader.onload = (e) => {
-        const text = e.target?.result as string
-        setContent(text)
-        setFilename(file.name)
+      if (isExcelFile(file.name)) {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          const buffer = e.target?.result as ArrayBuffer
+          try {
+            const yamlContent = excelBufferToYaml(buffer, file.name)
+            setContent(yamlContent)
+            setFilename(file.name.replace(/\.[^.]+$/, '.yaml'))
+          } catch (err) {
+            console.error('Excel parse error:', err)
+          }
+        }
+        reader.readAsArrayBuffer(file)
+      } else {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          const text = e.target?.result as string
+          setContent(text)
+          setFilename(file.name)
+        }
+        reader.readAsText(file)
       }
-      reader.readAsText(file)
     },
     [setContent, setFilename]
   )
@@ -23,6 +45,17 @@ export function useFileHandler({ setContent, setFilename }: UseFileHandlerOption
     const input = document.createElement('input')
     input.type = 'file'
     input.accept = '.yaml,.yml,.json,.txt'
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0]
+      if (file) handleFile(file)
+    }
+    input.click()
+  }, [handleFile])
+
+  const importExcel = useCallback(() => {
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = '.xlsx,.xls,.xlsm,.xlsb,.csv'
     input.onchange = (e) => {
       const file = (e.target as HTMLInputElement).files?.[0]
       if (file) handleFile(file)
@@ -76,5 +109,5 @@ export function useFileHandler({ setContent, setFilename }: UseFileHandlerOption
     }
   }, [handleFile])
 
-  return { openFile, saveFile }
+  return { openFile, importExcel, saveFile }
 }

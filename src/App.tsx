@@ -12,7 +12,7 @@ import { YamlTree } from './components/Preview/YamlTree'
 export default function App() {
   const [viewMode, setViewMode] = useState<ViewMode>('split')
   const { content, setContent, filename, setFilename, error, tree } = useYaml()
-  const { openFile, saveFile } = useFileHandler({ setContent, setFilename })
+  const { openFile, importExcel, saveFile } = useFileHandler({ setContent, setFilename })
   const { previewRef, handleExportPdf, handleExportHtml } = useExport(filename)
   const { expanded, toggle, expandAll, collapseAll, expandToLevel } = useTreeState(tree)
 
@@ -60,6 +60,7 @@ export default function App() {
         viewMode={viewMode}
         onViewModeChange={setViewMode}
         onOpenFile={openFile}
+        onImportExcel={importExcel}
         onSaveFile={handleSave}
         onExportPdf={handleExportPdf}
         onExportHtml={handleExportHtml}

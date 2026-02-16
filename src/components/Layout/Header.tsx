@@ -6,6 +6,7 @@ interface HeaderProps {
   viewMode: ViewMode
   onViewModeChange: (mode: ViewMode) => void
   onOpenFile: () => void
+  onImportExcel: () => void
   onSaveFile: () => void
   onExportPdf: () => void
   onExportHtml: () => void
@@ -17,6 +18,7 @@ export function Header({
   viewMode,
   onViewModeChange,
   onOpenFile,
+  onImportExcel,
   onSaveFile,
   onExportPdf,
   onExportHtml,
@@ -69,8 +71,14 @@ export function Header({
       </div>
 
       <div className={styles.right}>
-        <button className={styles.btn} onClick={onOpenFile} title="Open File (Ctrl+O)">
+        <button className={styles.btn} onClick={onOpenFile} title="Open YAML (Ctrl+O)">
           Open
+        </button>
+        <button className={`${styles.btn} ${styles.excelBtn}`} onClick={onImportExcel} title="Import Excel → YAML (.xlsx, .xls, .csv)">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M2 2v12h12V5.5L10.5 2H2zm1 1h6v3.5h3.5V13H3V3zm7 .7L12.3 6H10V3.7zM5.3 7L7 9.5 5.3 12h1.4L8 10.3 9.3 12h1.4L9 9.5 10.7 7H9.3L8 8.7 6.7 7H5.3z" />
+          </svg>
+          Excel
         </button>
         <button className={styles.btn} onClick={onSaveFile} title="Save YAML">
           Save
