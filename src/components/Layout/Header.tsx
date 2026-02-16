@@ -10,6 +10,7 @@ interface HeaderProps {
   onSaveFile: () => void
   onExportPdf: () => void
   onExportHtml: () => void
+  onExportExcel: () => void
   error: string | null
 }
 
@@ -22,6 +23,7 @@ export function Header({
   onSaveFile,
   onExportPdf,
   onExportHtml,
+  onExportExcel,
   error,
 }: HeaderProps) {
   return (
@@ -89,6 +91,12 @@ export function Header({
           </button>
           <button className={styles.btn} onClick={onExportHtml} title="Export as HTML">
             HTML
+          </button>
+          <button className={`${styles.btn} ${styles.excelBtn}`} onClick={onExportExcel} title="Export YAML → Excel (.xlsx)">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zm-1 12H3V3h10v10zM5 5h2v2H5V5zm0 3h2v2H5V8zm3-3h3v2H8V5zm0 3h3v2H8V8zm-3 3h6v1H5v-1z" />
+            </svg>
+            Excel
           </button>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useYaml } from './hooks/useYaml'
 import { useFileHandler } from './hooks/useFileHandler'
 import { useExport } from './hooks/useExport'
 import { useTreeState } from './hooks/useTreeState'
+import { yamlToExcel } from './utils/yamlToExcel'
 import { Header } from './components/Layout/Header'
 import { SplitPane } from './components/Layout/SplitPane'
 import { YamlEditor } from './components/Editor/YamlEditor'
@@ -11,7 +12,7 @@ import { YamlTree } from './components/Preview/YamlTree'
 
 export default function App() {
   const [viewMode, setViewMode] = useState<ViewMode>('split')
-  const { content, setContent, filename, setFilename, error, tree } = useYaml()
+  const { content, setContent, filename, setFilename, parsed, error, tree } = useYaml()
   const { openFile, importExcel, saveFile } = useFileHandler({ setContent, setFilename })
   const { previewRef, handleExportPdf, handleExportHtml } = useExport(filename)
   const { expanded, toggle, expandAll, collapseAll, expandToLevel } = useTreeState(tree)
@@ -19,6 +20,11 @@ export default function App() {
   const handleSave = useCallback(() => {
     saveFile(content, filename)
   }, [content, filename, saveFile])
+
+  const handleExportExcel = useCallback(() => {
+    if (parsed === null && error) return
+    yamlToExcel(parsed, filename)
+  }, [parsed, error, filename])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -64,6 +70,7 @@ export default function App() {
         onSaveFile={handleSave}
         onExportPdf={handleExportPdf}
         onExportHtml={handleExportHtml}
+        onExportExcel={handleExportExcel}
         error={error}
       />
       <SplitPane
