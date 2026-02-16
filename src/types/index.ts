@@ -12,4 +12,10 @@ export interface TreeNodeData {
   children?: TreeNodeData[]
   childCount?: number
   arrayIndex?: number
+  /** Display label — uses "name"/"provider"/"title"/"label" field if present */
+  label?: string
+  /** True when this node is an object/array-item whose values are all scalars */
+  isLeaf?: boolean
+  /** Flat key→value pairs for inline display of leaf objects */
+  fields?: Record<string, unknown>
 }

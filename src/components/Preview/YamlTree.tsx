@@ -87,6 +87,7 @@ export const YamlTree = forwardRef<HTMLDivElement, YamlTreeProps>(
                     isLast={i === tree.length - 1}
                     depth={0}
                     search={search}
+                    guides={[]}
                   />
                 )
               })}
