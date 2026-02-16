@@ -1,0 +1,19 @@
+.editor {
+  height: 100%;
+  overflow: hidden;
+}
+
+.editor :global(.cm-editor) {
+  height: 100%;
+  font-size: var(--font-size-md);
+  font-family: var(--font-mono);
+}
+
+.editor :global(.cm-scroller) {
+  overflow: auto;
+}
+
+.editor :global(.cm-gutters) {
+  background: var(--color-bg-secondary);
+  border-right: 1px solid var(--color-border-light);
+}

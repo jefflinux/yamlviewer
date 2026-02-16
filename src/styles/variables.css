@@ -1,0 +1,60 @@
+:root {
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f6f8fa;
+  --color-bg-tertiary: #f0f2f5;
+  --color-text: #1f2328;
+  --color-text-secondary: #656d76;
+  --color-text-tertiary: #8b949e;
+  --color-border: #d0d7de;
+  --color-border-light: #e8ebef;
+  --color-accent: #0969da;
+  --color-accent-hover: #0860c4;
+  --color-header-bg: #24292f;
+  --color-header-text: #ffffff;
+  --color-success: #1a7f37;
+  --color-danger: #cf222e;
+  --color-warning: #9a6700;
+
+  /* Tree value colors */
+  --color-string: #0a3069;
+  --color-number: #0550ae;
+  --color-boolean: #cf222e;
+  --color-null: #8b949e;
+  --color-key: #1f2328;
+  --color-key-hover: #0969da;
+
+  /* Tree structure */
+  --color-tree-line: #d0d7de;
+  --color-tree-icon-folder: #54aeff;
+  --color-tree-icon-file: #656d76;
+  --color-tree-badge: #eef1f5;
+  --color-tree-badge-text: #656d76;
+  --color-tree-hover: #f6f8fa;
+  --color-tree-selected: #ddf4ff;
+
+  /* Fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* Sizes */
+  --header-height: 48px;
+  --toolbar-height: 36px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-md: 13px;
+  --font-size-lg: 14px;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+
+  /* Layout */
+  --radius: 6px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --tree-indent: 20px;
+}

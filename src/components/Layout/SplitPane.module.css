@@ -1,0 +1,9 @@
+.split {
+  flex: 1;
+  overflow: hidden;
+}
+
+.pane {
+  height: 100%;
+  overflow: auto;
+}

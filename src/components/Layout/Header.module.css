@@ -1,0 +1,140 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 var(--space-lg);
+  background: var(--color-header-bg);
+  color: var(--color-header-text);
+  gap: var(--space-md);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  white-space: nowrap;
+}
+
+.version {
+  font-size: var(--font-size-xs);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.filename {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 180px;
+}
+
+.error {
+  font-size: var(--font-size-xs);
+  background: var(--color-danger);
+  color: white;
+  padding: 1px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+.viewToggle {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 5px 12px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.toggleBtn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.toggleBtn.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.exportGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: var(--space-xs);
+  padding-left: var(--space-sm);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn {
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 var(--space-sm);
+  }
+  .filename {
+    display: none;
+  }
+  .exportGroup {
+    display: none;
+  }
+}
